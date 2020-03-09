@@ -6,12 +6,11 @@ import os
 
 base_clip_path = 'https://clips-media-assets2.twitch.tv/'
 clip_txt_file=sys.argv[1]
-
+cid = sys.argv[2]
 basepath ='/mnt/archive/Twitch_clips/downloads/'+clip_txt_file.split('/')[-1][:-4]
 if not os.path.exists(basepath):
     os.makedirs(basepath)
 def retrieve_mp4_data(slug):
-    cid = 'hcpiqm2zqa7lit8vmd9xxr4n046epj'
     clip_info = requests.get(
         "https://api.twitch.tv/helix/clips?id=" + slug,
         headers={"Client-ID": cid}).json()
